@@ -4,7 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
-        <setting name="logImpl" value="LOG4J"/>        
+        <setting name="logImpl" value="LOG4J"/>  
+        <typeAliases>
+            <typeAlias type='edu.eci.pdsw.samples.entities.EntradaForo' alias='EntradaForo'/>
+            <typeAlias type='edu.eci.pdsw.samples.entities.Comentario' alias='Comentario'/>
+            <typeAlias type='edu.eci.pdsw.samples.entities.Usuario' alias='Usuario'/>
+        </typeAliases>          
     </settings>
     
         
