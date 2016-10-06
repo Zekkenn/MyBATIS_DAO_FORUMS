@@ -3,7 +3,13 @@
 ####Tecnologías de persistencia - Frameworks de Persistencia - Introducción a MyBatis
 
 
-En este laboratorio, se realizará el mismo ejercicio desarrollado semanas atrás con JDBC 'plano', pero esta vez haciendo uso de un 'framework' de persistencia.
+En este laboratorio, se realizará el mismo ejercicio desarrollado semanas atrás con JDBC 'plano', pero esta vez haciendo uso de un 'framework' de persistencia. La base de datos que se utilizará tiene los siguientes parámetros:
+
+	host: desarrollo.is.escuelaing.edu.co
+	puerto: 3306
+	usuario: bdprueba
+	pwd: bdprueba
+	base de datos: bdprueba
 
 ![](img/FORUMS_MODEL.png)
 
@@ -19,7 +25,7 @@ En este laboratorio, se realizará el mismo ejercicio desarrollado semanas atrá
     </typeAliases>             
 ```
 
-2. Lo primero que va a hacer es configurar un 'mapper' que permita que el framework construya el grafo de objetos correspondiente a todas las entradas de foro disponibles. Para hacer más eficiente la reconstrucción, la misma se realizará a partir de una sola sentencia SQL que relaciona las entradas de foro, los comentarios, y sus respectivos autores. Ejecute esta sentencia en un cliente SQL, y revise qué nombre se le está asignando a cada columna del resultado:
+2. Lo primero que va a hacer es configurar un 'mapper' que permita que el framework construya el grafo de objetos correspondiente a todas las entradas de foro disponibles. Para hacer más eficiente la reconstrucción, la misma se realizará a partir de una sola sentencia SQL que relaciona las entradas de foro, los comentarios, y sus respectivos autores. Ejecute esta sentencia en un cliente SQL (en las estaciones Linux está instalado EMMA), y revise qué nombre se le está asignando a cada columna del resultado:
 
 	```sql
 	select ef.id, ef.fecha_hora, ef.contenido, cm.id as id, cm.fecha_hora as fecha_hora, cm.contenido as contenido, autor.nombre as nombre, autor.email as email, autorcom.nombre as nombre,  autorcom.email as email
