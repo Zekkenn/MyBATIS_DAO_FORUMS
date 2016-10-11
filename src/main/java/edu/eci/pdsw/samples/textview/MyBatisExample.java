@@ -63,11 +63,14 @@ public class MyBatisExample {
      * @throws SQLException 
      */
     public static void main(String args[]) throws SQLException {
+                
+
         SqlSessionFactory sessionfact = getSqlSessionFactory();
-
         SqlSession sqlss = sessionfact.openSession();
-
         
+        
+        EntradaForoMapper pedmp=sqlss.getMapper(EntradaForoMapper.class);
+        System.out.println(pedmp.getEntradasForo());
         
         sqlss.commit();
         
