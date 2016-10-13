@@ -39,12 +39,11 @@ public class MyBatisDAOEntradaForo implements DaoEntradaForo{
         
     @Override
     public EntradaForo load(int id) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return currentSession.getMapper(EntradaForoMapper.class).getEntradaForo(id);
     }
 
     @Override
     public List<EntradaForo> loadAll() throws PersistenceException {
-
         return currentSession.getMapper(EntradaForoMapper.class).getEntradasForo();
     }
 
@@ -60,7 +59,7 @@ public class MyBatisDAOEntradaForo implements DaoEntradaForo{
 
     @Override
     public void addToForo(int idForo, Comentario c) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        currentSession.getMapper(EntradaForoMapper.class).agregarComentarioAEntradaForo(idForo, c);
     }
     
 }
