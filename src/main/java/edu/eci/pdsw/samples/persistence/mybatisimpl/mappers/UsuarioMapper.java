@@ -25,8 +25,8 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface UsuarioMapper {
     
-    public Usuario getUsuario(@Param ("emailusuario")String email);    
+    public Usuario getUsuario(@Param ("emailusuario") String email);    
     
-    public void insertarUsuario(String email,String nombre);
+    public void insertarUsuario(@Param ("emailUsuario") String email, @Param ("nombreUsuario") String nombre);
 
 }
