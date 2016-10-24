@@ -47,5 +47,11 @@
         VALUES (#{comentarioEntradaForo.getFechayHora()}, #{comentarioEntradaForo.getContenido()}, #{idEntradaForo}, #{comentarioEntradaForo.getAutor().getEmail()});
         
     </insert>
+    
+    <insert id="guardarEntradaForo" parameterType="map">
+        INSERT INTO Entradas_Foros (id, fecha_hora, contenido, USUARIOS_email) 
+        VALUES ( #{entradaForo.getIdentificador()}, #{entradaForo.getFechayHora()}, #{entradaForo.getTitulo()}, #{entradaForo.getAutor().getEmail()});
+        
+    </insert>
   	
 </mapper>

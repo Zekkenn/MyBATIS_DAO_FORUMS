@@ -26,10 +26,10 @@ public class ServiciosForoDAO extends ServiciosForo{
     private DaoFactory daof;
     
     public ServiciosForoDAO() {
-        Properties properties = null;        
+        Properties properties = null;
         try {
             properties = new PropertiesLoader().readProperties("applicationconfig.properties");
-            DaoFactory daof=DaoFactory.getInstance(properties);
+            daof=DaoFactory.getInstance(properties);
         } catch (IOException ex) {
             Logger.getLogger(ServiciosForoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -41,6 +41,7 @@ public class ServiciosForoDAO extends ServiciosForo{
         try {
             daof.beginSession();
             entradaForo = daof.getDaoEntradaForo().loadAll();
+            daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosForoDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosForos(ex.getMessage());
@@ -54,18 +55,22 @@ public class ServiciosForoDAO extends ServiciosForo{
         try {
             daof.beginSession();
             entradaForo = daof.getDaoEntradaForo().load(id);
+            daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosForoDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosForos(ex.getMessage());
         }
+        if(entradaForo == null) throw new ExcepcionServiciosForos("No se ha encontrado identificador asociado a alguna entrada de foro.");
         return entradaForo;
     }
 
     @Override
     public void registrarNuevaEntradaForo(EntradaForo f) throws ExcepcionServiciosForos {
+        if(f.getAutor() == null) throw new ExcepcionServiciosForos("No hay usuario asociado al foro.");
         try {
             daof.beginSession();
             daof.getDaoEntradaForo().save(f);
+            daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosForoDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosForos(ex.getMessage());
@@ -74,9 +79,11 @@ public class ServiciosForoDAO extends ServiciosForo{
 
     @Override
     public void agregarRespuestaForo(int idforo, Comentario c) throws ExcepcionServiciosForos {
+        if(c.getAutor() == null || c.getAutor().getEmail() == null) throw new ExcepcionServiciosForos("Los comentarios deben tener usuarios asociados o el usuario deben tener email.");
         try {
             daof.beginSession();
             daof.getDaoEntradaForo().addToForo(idforo, c);
+            daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosForoDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosForos(ex.getMessage());
@@ -89,6 +96,7 @@ public class ServiciosForoDAO extends ServiciosForo{
         try {
             daof.beginSession();
             user = daof.getDaoUsuario().load(email);
+            daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosForoDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosForos(ex.getMessage());

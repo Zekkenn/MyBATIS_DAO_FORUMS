@@ -20,6 +20,7 @@ import edu.eci.pdsw.samples.entities.Comentario;
 import edu.eci.pdsw.samples.entities.EntradaForo;
 import edu.eci.pdsw.samples.entities.Usuario;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosForos;
+import edu.eci.pdsw.samples.services.ServiciosForo;
 import edu.eci.pdsw.samples.services.ServiciosForoStub;
 import java.sql.Date;
 import org.junit.Before;
@@ -53,10 +54,10 @@ public class ComentariosTest {
      */
     @Test
     public void registroPacienteTest(){
-        ServiciosForoStub sfs = new ServiciosForoStub();
+        ServiciosForo sf = ServiciosForo.getInstance();
         try{
-            EntradaForo ef = sfs.consultarEntradaForo(0);
-            sfs.agregarRespuestaForo(0, new Comentario(null, "Porque no seca.", new Date(20,12,3)));
+            EntradaForo ef = sf.consultarEntradaForo(0);
+            sf.agregarRespuestaForo(0, new Comentario(null, "Porque no seca.", new Date(20,12,3)));
             fail("Tiene que mostrar un error.");
         } catch(ExcepcionServiciosForos e){}
     }
