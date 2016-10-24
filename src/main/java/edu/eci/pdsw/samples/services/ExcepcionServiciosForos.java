@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 hcadavid
+ * Copyright (C) 2015 hcadavid
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,44 +14,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package edu.eci.pdsw.samples.entities;
-
-import java.io.Serializable;
+package edu.eci.pdsw.samples.services;
 
 /**
  *
  * @author hcadavid
  */
-public class Usuario implements Serializable  {
-    
-    private String email;
-    
-    private String nombre;
+public class ExcepcionServiciosForos extends Exception {
 
-    public Usuario() {
+    public ExcepcionServiciosForos() {
     }
 
-    public Usuario(String email, String nombre) {
-        this.email = email;
-        this.nombre = nombre;
+    public ExcepcionServiciosForos(String message) {
+        super(message);
     }
 
-    public String getEmail() {
-        return email;
+    public ExcepcionServiciosForos(String message, Throwable cause) {
+        super(message, cause);
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public ExcepcionServiciosForos(Throwable cause) {
+        super(cause);
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    
     
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head></h:head>
+
+    <h:body>        
+        <h:form id="form2" rendered="#{registroForo.puedeMostrar()}">
+            <p:growl id="msgs" showDetail="true" />
+            <p:panel >
+                <p:dataTable id="table2" var = "foro" value="#{registroForo.getRespuestas()}">
+                    <f:facet name ="header">
+                        #{registroForo.foro.getTitulo()}
+                    </f:facet>                  
+                    <p:column>
+                        <f:facet name="header">
+                            User
+                        </f:facet>
+                            #{foro.getAutor().nombre}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Content
+                        </f:facet>
+                            #{foro.getContenido()}
+                    </p:column>                    
+                    <p:column>
+                        <f:facet name="header">
+                            Date
+                        </f:facet>
+                            #{foro.getFechayHora()}
+                    </p:column>                    
+                    <f:facet name="footer"> 
+                        <p:commandButton value="New Commentary" icon="ui-icon-circle-check" oncomplete="PF('detail').show()" actionListener="#{registroForo.clean()}" />
+                        <p:commandButton value="Return to Forums" action="registroentradaforo" immediate="true" />
+                    </f:facet>                    
+                </p:dataTable>
+                <p:dialog header="New Commentary" widgetVar="detail" modal="true" showEffect="explode" hideEffect="drop" resizable="true" width="500">
+                    <h:panelGrid columns="2" cellpadding="3">
+                        <h:outputLabel for="username" value="Username:" />
+                        <p:inputText id="username" value="#{registroForo.nameUser}" required="true" label="username" />
+
+                        <h:outputLabel for="emailUser" value="User Email:" />
+                        <p:inputText id="emailUser" value="#{registroForo.emailUser}" required="true" label="emailUser" />
+                        
+                        <h:outputLabel for="Commentary" value="Commentary Forum:" />
+                        <p:inputText id="CommentaryForum" value="#{registroForo.commentaryForum}" required="true" label="CommentaryForum" />
+                        
+                        <f:facet name="footer">
+                            <p:commandButton value="Submit" update=":form2" oncomplete="PF('detail').hide()" actionListener="#{registroForo.setRespuestas()}" />
+                        </f:facet>
+                    </h:panelGrid>
+                </p:dialog>
+            </p:panel>
+        </h:form>        
+        <h:form id="form3" rendered="#{not registroForo.puedeMostrar()}">
+            <p:outputPanel deferred="true">
+                <h3>No Forum selected</h3>
+                <p>You must choose a forum to see the comments</p>
+                <p:commandButton value="Return to Forums" action="registroentradaforo" />
+            </p:outputPanel>
+        </h:form>
+    </h:body>
+
+</html>

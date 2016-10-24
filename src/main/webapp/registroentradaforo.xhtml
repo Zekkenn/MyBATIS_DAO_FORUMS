@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head></h:head>
+
+    <h:body>
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" />
+            <p:panel >
+                <p:dataTable id="table" var = "foro" value="#{registroForo.foros}" selectionMode="single"
+                             selection="#{registroForo.foro}" rowKey="#{foro.identificador}" >
+                    <p:ajax event="rowSelect" listener="#{registroForo.onRowSelect}" 
+                            update=":form:msgs" />
+                    <f:facet name ="header">
+                        Forums :)
+                    </f:facet>
+                    <p:column>
+                        <f:facet name="header">
+                            Identification
+                        </f:facet>
+                            #{foro.identificador}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Tittle
+                        </f:facet>
+                            #{foro.titulo}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Description
+                        </f:facet>
+                            #{foro.comentario}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Author
+                        </f:facet>
+                            #{foro.autor.nombre}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Date
+                        </f:facet>
+                            #{foro.fechayHora.toString()}
+                    </p:column>
+                    <f:facet name="footer"> 
+                        <p:commandButton value="Add New Forum" icon="ui-icon-circle-check" oncomplete="PF('detail').show()" actionListener="#{registroForo.clean()}" />
+                        <p:commandButton value="View Forum Selected" action="registrorespuestaforo" immediate="true" />
+                    </f:facet>
+                </p:dataTable>
+                <p:dialog header="New Forum" widgetVar="detail" modal="true" showEffect="explode" hideEffect="drop" resizable="true" width="500">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Username:" />
+                        <p:inputText id="username" value="#{registroForo.nameUser}" required="true" label="username" />
+
+                        <h:outputLabel for="emailUser" value="User Email:" />
+                        <p:inputText id="emailUser" value="#{registroForo.emailUser}" required="true" label="emailUser" />
+                        
+                        <h:outputLabel for="tittleForum" value="Tittle Forum:" />
+                        <p:inputText id="tittleForum" value="#{registroForo.tittleUserForum}" required="true" label="tittleForum" />
+
+                        <h:outputLabel for="commentForum" value="Comment Forum:" />
+                        <p:inputText id="commentForum" value="#{registroForo.commentUserForum}" required="true" label="commentForum" />
+                        
+                        <f:facet name="footer">
+                            <p:commandButton value="Submit" update=":form" oncomplete="PF('detail').hide()" actionListener="#{registroForo.submit}" />
+                        </f:facet>
+                    </h:panelGrid>
+                </p:dialog>
+            </p:panel>
+        </h:form>
+    </h:body>
+
+</html>
