@@ -18,9 +18,12 @@
 
 import edu.eci.pdsw.samples.entities.EntradaForo;
 import edu.eci.pdsw.samples.entities.Usuario;
+import edu.eci.pdsw.samples.services.ExcepcionServiciosForos;
 import edu.eci.pdsw.samples.services.ServiciosForo;
 import edu.eci.pdsw.samples.services.ServiciosForoStub;
 import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -72,4 +75,16 @@ public class EntradasForoTest {
         } catch (Exception e){
         }
     }   
+    
+    @Test
+    public void idInvalido(){
+        ServiciosForo sf = ServiciosForo.getInstance();
+        try {
+            sf.consultarEntradaForo(-50);
+            fail("Ha consultado un foro con id invalida");
+        } catch (ExcepcionServiciosForos e) {
+            
+        }
+        
+    }
 }
