@@ -48,9 +48,9 @@
         
     </insert>
     
-    <insert id="guardarEntradaForo">
-        INSERT INTO Entradas_Foros (id, fecha_hora, contenido, USUARIOS_email) 
-        VALUES ( #{Foro.getIdentificador()}, #{Foro.getFechayHora()}, #{Foro.getTitulo()}, #{Foro.getAutor().getEmail()});
+    <insert id="guardarEntradaForo" parameterType="map">
+        INSERT INTO ENTRADAS_FOROS (id, fecha_hora, contenido, USUARIOS_email) 
+        VALUES ( #{Foro.identificador}, #{Foro.fechayHora}, #{Foro.titulo}, #{Foro.autor.email});
         
     </insert>
   	

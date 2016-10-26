@@ -52,8 +52,8 @@ public class EntradasForoTest {
     @Test
     public void EntradaForoConUsuario(){
         ServiciosForo sf = ServiciosForo.getInstance();
-        Usuario us = new Usuario("emaildeejempo@hotmail.com","Usuario de ejemplo");
-        Date dt = new Date(1,2,3);
+        Usuario us = new Usuario("martin@gmail.com","martin");
+        Date dt = new Date(java.util.Calendar.getInstance().getTime().getTime());
         EntradaForo ef = new EntradaForo(1,us,"Comentario de prueba","Esto es el titulo de una prueba",dt);
         try{
             sf.registrarNuevaEntradaForo(ef);
