@@ -153,7 +153,7 @@ public class RegistroForosBean implements Serializable{
         FacesMessage message = null;
         Date dt = new Date(java.util.Calendar.getInstance().getTime().getTime());
         try{
-            sp.registrarNuevaEntradaForo(new EntradaForo(sp.consultarEntradasForo().size(), 
+            sp.registrarNuevaEntradaForo(new EntradaForo(sp.consultarEntradasForo().size()+1, 
                 new Usuario(emailUser, nameUser), commentUserForum, tittleUserForum, dt));
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "The forum has been added");
         } catch(ExcepcionServiciosForos e){
