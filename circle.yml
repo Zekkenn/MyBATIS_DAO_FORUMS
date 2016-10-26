@@ -6,7 +6,7 @@ deployment:
   staging:
     branch: master
     heroku: 
-      appname: pdsw-circleci-demo
+      appname: lab8-pdsw
 
 test:
   post:
