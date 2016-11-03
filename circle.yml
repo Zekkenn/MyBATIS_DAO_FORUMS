@@ -6,7 +6,7 @@ deployment:
   staging:
     branch: master
     heroku: 
-      appname: aeci--proyecto-pdsw
+      appname: aeci---proyecto-pdsw
 
 test:
   post:
