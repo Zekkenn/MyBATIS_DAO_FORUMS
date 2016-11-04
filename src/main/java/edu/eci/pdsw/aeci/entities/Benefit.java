@@ -11,4 +11,28 @@ package edu.eci.pdsw.aeci.entities;
  */
 public class Benefit {
     
+    private int id;
+    private String description;
+    
+    public Benefit( int Id,String Description){
+        id=Id;
+        description=Description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
 }

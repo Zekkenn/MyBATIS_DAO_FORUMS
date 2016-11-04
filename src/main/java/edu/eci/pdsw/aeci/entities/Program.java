@@ -5,10 +5,37 @@
  */
 package edu.eci.pdsw.aeci.entities;
 
+import java.sql.Date;
+
 /**
  *
  * @author 2095498
  */
 public class Program {
+    
+    private int duration;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+  
+     
+    public Program( String Name, int Duration) {
+        this.name=Name;
+        this.duration=Duration;
+    }
     
 }
