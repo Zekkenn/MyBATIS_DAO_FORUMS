@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS Account (
     Active bool NULL,
     Salt int NOT NULL,
     CONSTRAINT Account_pk PRIMARY KEY (Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: Agreement
 CREATE TABLE IF NOT EXISTS Agreement (
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS AgreementBenefit (
     Agreement_Id int NOT NULL,
     Benefit_Id int NOT NULL,
     CONSTRAINT AgreementBenefit_pk PRIMARY KEY (Agreement_Id, Benefit_Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: Benefit
 CREATE TABLE IF NOT EXISTS Benefit (
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS Membership (
     Rate_id int NOT NULL,
     End_Date timestamp NULL,
     CONSTRAINT Membership_pk PRIMARY KEY (Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: Program
 CREATE TABLE IF NOT EXISTS Program (
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS Rate (
     Year date NULL,
     Value int NULL,
     CONSTRAINT Rate_pk PRIMARY KEY (Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: Request
 CREATE TABLE IF NOT EXISTS Request (
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS Student (
     User_id int NOT NULL,
     Semester int NULL COMMENT 'Last 3 semesters.',
     CONSTRAINT Student_pk PRIMARY KEY (Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: User
 CREATE TABLE IF NOT EXISTS User (
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS Uses (
     Account_Id int NOT NULL,
     Agreement_Id int NOT NULL,
     CONSTRAINT Uses_pk PRIMARY KEY (Account_Id, Agreement_Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- foreign keys
 -- Reference: Account_Uses (table: Uses)
