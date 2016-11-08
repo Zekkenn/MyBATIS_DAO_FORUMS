@@ -15,10 +15,10 @@ CREATE TABLE IF NOT EXISTS Account (
 CREATE TABLE IF NOT EXISTS Agreement (
     Id int NOT NULL,
     Start_Date date NULL,
-    Name varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+    Name varchar(200) NOT NULL,
     End_Date date NOT NULL,
     CONSTRAINT Agreement_pk PRIMARY KEY (Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: AgreementBenefit
 CREATE TABLE IF NOT EXISTS AgreementBenefit (
@@ -30,20 +30,20 @@ CREATE TABLE IF NOT EXISTS AgreementBenefit (
 -- Table: Benefit
 CREATE TABLE IF NOT EXISTS Benefit (
     Id int NOT NULL,
-    Description varchar(1000) COLLATE utf8_unicode_ci NULL,
+    Description varchar(1000) NULL,
     CONSTRAINT Benefit_pk PRIMARY KEY (Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: Graduate
 CREATE TABLE IF NOT EXISTS Graduate (
     Id int NOT NULL,
-    Charge varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-    Employer varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-    Office_Adress varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+    Charge varchar(200) NOT NULL,
+    Employer varchar(500) NOT NULL,
+    Office_Adress varchar(200) NOT NULL,
     Office_Phone int NOT NULL,
     User_id int NOT NULL,
     CONSTRAINT Graduate_pk PRIMARY KEY (Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: Membership
 CREATE TABLE IF NOT EXISTS Membership (
@@ -60,10 +60,10 @@ CREATE TABLE IF NOT EXISTS Membership (
 -- Table: Program
 CREATE TABLE IF NOT EXISTS Program (
     Id int NOT NULL,
-    Name varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+    Name varchar(50) NOT NULL,
     Duration int NULL DEFAULT 10 COMMENT 'En semestres',
     CONSTRAINT Program_pk PRIMARY KEY (Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: Rate
 CREATE TABLE IF NOT EXISTS Rate (
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS Request (
     Comentary varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
     State char(1) NULL DEFAULT "E" COMMENT 'Tipos: Aprobado - "A"; En espera - "E"; Rechazado - "R"',
     CONSTRAINT Request_pk PRIMARY KEY (Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: Student
 CREATE TABLE IF NOT EXISTS Student (
@@ -94,11 +94,11 @@ CREATE TABLE IF NOT EXISTS Student (
 -- Table: User
 CREATE TABLE IF NOT EXISTS User (
     Id int NOT NULL,
-    FirstName varchar(200) COLLATE utf8_unicode_ci NULL,
-    LastName varchar(200) COLLATE utf8_unicode_ci NULL,
-    Email varchar(200) COLLATE utf8_unicode_ci NULL,
-    Phone varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-    Cellphone varchar(20) COLLATE utf8_unicode_ci NULL,
+    FirstName varchar(200) NULL,
+    LastName varchar(200) NULL,
+    Email varchar(200) NULL,
+    Phone varchar(20) NOT NULL,
+    Cellphone varchar(20) NULL,
     Progam_Id int NOT NULL,
     YearGraduate int NOT NULL,
     BirthDate timestamp NOT NULL,
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS User (
     UNIQUE INDEX Email (Email),
     UNIQUE INDEX Celphone (Cellphone),
     CONSTRAINT User_pk PRIMARY KEY (Id)
-) ENGINE = InnoDB COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB;
 
 -- Table: Uses
 CREATE TABLE IF NOT EXISTS Uses (
