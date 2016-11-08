@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS Membership (
 CREATE TABLE IF NOT EXISTS Program (
     Id int NOT NULL,
     Name varchar(50) NOT NULL,
-    Duration int NULL DEFAULT 10 COMMENT 'En semestres',
+    Duration int NULL COMMENT 'En semestres',
     CONSTRAINT Program_pk PRIMARY KEY (Id)
 ) ENGINE = InnoDB;
 
@@ -78,8 +78,8 @@ CREATE TABLE IF NOT EXISTS Request (
     User_Id int NOT NULL,
     Id int NOT NULL AUTO_INCREMENT,
     Date timestamp NULL,
-    Comentary varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
-    State char(1) NULL DEFAULT "E" COMMENT 'Tipos: Aprobado - "A"; En espera - "E"; Rechazado - "R"',
+    Comentary varchar(1000) NOT NULL,
+    State char(1) NULL COMMENT 'Tipos: Aprobado - A; En espera - E; Rechazado - R',
     CONSTRAINT Request_pk PRIMARY KEY (Id)
 ) ENGINE = InnoDB;
 
@@ -117,47 +117,47 @@ CREATE TABLE IF NOT EXISTS Uses (
 
 -- foreign keys
 -- Reference: Account_Uses (table: Uses)
-ALTER TABLE Uses ADD CONSTRAINT Account_Uses FOREIGN KEY Account_Uses (Account_Id)
+ALTER TABLE Uses ADD CONSTRAINT Account_Uses FOREIGN KEY (Account_Id)
     REFERENCES Account (Id);
 
 -- Reference: Afiliacion_Cuenta (table: Membership)
-ALTER TABLE Membership ADD CONSTRAINT Afiliacion_Cuenta FOREIGN KEY Afiliacion_Cuenta (Account_Id)
+ALTER TABLE Membership ADD CONSTRAINT Afiliacion_Cuenta FOREIGN KEY (Account_Id)
     REFERENCES Account (Id);
 
 -- Reference: AgreementBenefit_Agreement (table: AgreementBenefit)
-ALTER TABLE AgreementBenefit ADD CONSTRAINT AgreementBenefit_Agreement FOREIGN KEY AgreementBenefit_Agreement (Agreement_Id)
+ALTER TABLE AgreementBenefit ADD CONSTRAINT AgreementBenefit_Agreement FOREIGN KEY (Agreement_Id)
     REFERENCES Agreement (Id);
 
 -- Reference: Agreement_Uses (table: Uses)
-ALTER TABLE Uses ADD CONSTRAINT Agreement_Uses FOREIGN KEY Agreement_Uses (Agreement_Id)
+ALTER TABLE Uses ADD CONSTRAINT Agreement_Uses FOREIGN KEY (Agreement_Id)
     REFERENCES Agreement (Id);
 
 -- Reference: Benefit_AgreementBenefit (table: AgreementBenefit)
-ALTER TABLE AgreementBenefit ADD CONSTRAINT Benefit_AgreementBenefit FOREIGN KEY Benefit_AgreementBenefit (Benefit_Id)
+ALTER TABLE AgreementBenefit ADD CONSTRAINT Benefit_AgreementBenefit FOREIGN KEY (Benefit_Id)
     REFERENCES Benefit (Id);
 
 -- Reference: Cuenta_User (table: Account)
-ALTER TABLE Account ADD CONSTRAINT Cuenta_User FOREIGN KEY Cuenta_User (Id)
+ALTER TABLE Account ADD CONSTRAINT Cuenta_User FOREIGN KEY (Id)
     REFERENCES User (Id);
 
 -- Reference: Program_User (table: User)
-ALTER TABLE User ADD CONSTRAINT Program_User FOREIGN KEY Program_User (Progam_Id)
+ALTER TABLE User ADD CONSTRAINT Program_User FOREIGN KEY (Progam_Id)
     REFERENCES Program (Id);
 
 -- Reference: Request_User (table: Request)
-ALTER TABLE Request ADD CONSTRAINT Request_User FOREIGN KEY Request_User (User_Id)
+ALTER TABLE Request ADD CONSTRAINT Request_User FOREIGN KEY (User_Id)
     REFERENCES User (Id);
 
 -- Reference: Tarifa_Afiliacion (table: Membership)
-ALTER TABLE Membership ADD CONSTRAINT Tarifa_Afiliacion FOREIGN KEY Tarifa_Afiliacion (Rate_id)
+ALTER TABLE Membership ADD CONSTRAINT Tarifa_Afiliacion FOREIGN KEY (Rate_id)
     REFERENCES Rate (Id);
 
 -- Reference: User_Graduate (table: Graduate)
-ALTER TABLE Graduate ADD CONSTRAINT User_Graduate FOREIGN KEY User_Graduate (User_id)
+ALTER TABLE Graduate ADD CONSTRAINT User_Graduate FOREIGN KEY (User_id)
     REFERENCES User (Id);
 
 -- Reference: User_Student (table: Student)
-ALTER TABLE Student ADD CONSTRAINT User_Student FOREIGN KEY User_Student (User_id)
+ALTER TABLE Student ADD CONSTRAINT User_Student FOREIGN KEY (User_id)
     REFERENCES User (Id);
 
 -- End of file.
