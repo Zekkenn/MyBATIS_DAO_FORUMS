@@ -6,7 +6,8 @@
       xmlns:p="http://primefaces.org/ui">
       <title>Empezando el proyecto</title>
       <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-      <body>
+      <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
+      <h:body>
           
           <!-- Distribución general -->
           
@@ -25,16 +26,16 @@
           </div>
           
           <!-- Parte superior -->
+          
           <header class="w3-display-container w3-content w3-wide" style="max-width:1500px" id="home">              
-              <img class="w3-image" src="prueba.jpg" alt="FotoEscuela" width="1500" height="600">
-              <div class="w3-display-middle w3-padding-xlarge w3-border w3-wide w3-text-light-grey w3-center">
-                 <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">AECI</h1>
-                 <h5 class="w3-hide-large" style="white-space:nowrap">AECI</h5>
+              <div class="w3-image"> <p:graphicImage name="/images/prueba.jpg" alt="FotoEscuela" width="1500" height="600"/></div>
+              <div class="w3-display-middle w3-padding-xlarge w3-border w3-wide w3-text-light-grey w3-bottom">
+                 <p:commandButton value="Enviar Solicitud" icon="ui-icon-circle-check" oncomplete="PF('detail').show()" />
               </div>
-              </img>
           </header>
           
           <!--  Contenido de la pagina -->
+          
           <div class="w3-content w3-padding" style="max-width:1564px">
               
               <!-- Quienes somos -->
@@ -59,8 +60,9 @@
               
               <div class="w3-container w3-padding-32" id="Contacto">
                   <h3 class="w3-border-bottom w3-border-light-grey w3-padding-12">Contactenos</h3>
-              </div>
+              </div>          
               
+            
           </div>
-      </body>
+      </h:body>
 </html>
