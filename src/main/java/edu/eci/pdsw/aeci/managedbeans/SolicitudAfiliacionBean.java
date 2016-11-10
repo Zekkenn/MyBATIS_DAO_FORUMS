@@ -44,7 +44,11 @@ public class SolicitudAfiliacionBean implements Serializable{
     private int AnoGraducacion;
     private int Periodo;
     
-    private void EnviarSolicitud(){
+    /**
+     *
+     */
+    public void enviarSolicitud(){
+        System.out.println("Nombre "+Nombre);
     }
     
     /**
