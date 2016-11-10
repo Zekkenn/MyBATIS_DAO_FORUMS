@@ -20,6 +20,9 @@ package edu.eci.pdsw.aeci.services;
 /**
 import edu.eci.pdsw.aeci.entities.Usuario;
 **/
+import edu.eci.pdsw.aeci.entities.Program;
+import edu.eci.pdsw.aeci.entities.Request;
+import edu.eci.pdsw.aeci.entities.User;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
@@ -31,6 +34,18 @@ import java.util.Set;
  */
 public abstract class ServiciosAeci implements Serializable{
     
+    private static ServiciosAeciDAO instance=new ServiciosAeciDAO();
+    
+    public static ServiciosAeciDAO getInstance() throws RuntimeException{        
+        return instance;
+    }
+    
+   public abstract void registrarNuevoUsuario(User usario);
+
+   public abstract void registrarNuevaSolicitud(Request solicitud);
    
+   public abstract List<Request> consultarEnviosSolicitud();
+   
+   public abstract Program consultarPrograma(int id);
        
 }

@@ -7,6 +7,9 @@ package edu.eci.pdsw.aeci.services;
 
 
 
+import edu.eci.pdsw.aeci.entities.Program;
+import edu.eci.pdsw.aeci.entities.Request;
+import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.persistence.DaoFactory;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import java.io.IOException;
@@ -26,6 +29,26 @@ public class ServiciosAeciDAO extends ServiciosAeci{
     
     public ServiciosAeciDAO() {
 
+    }
+    
+    @Override
+    public void registrarNuevoUsuario(User usario){
+    
+    }
+    
+    @Override
+    public void registrarNuevaSolicitud(Request solicitud){
+    
+    }
+    
+    @Override
+    public List<Request> consultarEnviosSolicitud(){
+        return null;
+    }
+    
+    @Override
+    public Program consultarPrograma(int id){
+        return null;
     }
 
 }

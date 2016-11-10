@@ -6,6 +6,7 @@
 package edu.eci.pdsw.aeci.entities;
 
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
+import java.sql.Date;
 
 /**
  *
@@ -18,11 +19,13 @@ public class User {
     private String lastName;
     private String email;
     private int phone;
-    private int celphone;
+    private String celphone;
     private Program program;
-    private String yearGraduate;
+    private int yearGraduate;
+    private int periodo;
+    private Date fechaDeNacimiento;
     
-    public User( int Id,String FirstName,String LastName,String Email,int Phone,int Celphone,Program programa, String YearGraduate ) throws ExcepcionServiciosAeci{
+    public User( int Id,String FirstName,String LastName,String Email,int Phone,String Celphone,Program programa, int YearGraduate, int periodo, Date fechaDeNacimiento) throws ExcepcionServiciosAeci{
         this.id=Id;
         this.firstName=FirstName;
         this.lastName=LastName;
@@ -32,6 +35,8 @@ public class User {
         this.celphone=Celphone;
         this.program=programa;
         this.yearGraduate=YearGraduate;
+        this.periodo = periodo;
+        this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
     public void revisarCorreo(String Email) throws ExcepcionServiciosAeci{
@@ -120,14 +125,14 @@ public class User {
     /**
      * @return the celphone
      */
-    public int getCelphone() {
+    public String getCelphone() {
         return celphone;
     }
 
     /**
      * @param celphone the celphone to set
      */
-    public void setCelphone(int celphone) {
+    public void setCelphone(String celphone) {
         this.celphone = celphone;
     }
 
@@ -148,15 +153,43 @@ public class User {
     /**
      * @return the yearGraduate
      */
-    public String getYearGraduate() {
+    public int getYearGraduate() {
         return yearGraduate;
     }
 
     /**
      * @param yearGraduate the yearGraduate to set
      */
-    public void setYearGraduate(String yearGraduate) {
+    public void setYearGraduate(int yearGraduate) {
         this.yearGraduate = yearGraduate;
+    }
+
+    /**
+     * @return the periodo
+     */
+    public int getPeriodo() {
+        return periodo;
+    }
+
+    /**
+     * @param periodo the periodo to set
+     */
+    public void setPeriodo(int periodo) {
+        this.periodo = periodo;
+    }
+
+    /**
+     * @return the fechaDeNacimiento
+     */
+    public Date getFechaDeNacimiento() {
+        return fechaDeNacimiento;
+    }
+
+    /**
+     * @param fechaDeNacimiento the fechaDeNacimiento to set
+     */
+    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+        this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
     

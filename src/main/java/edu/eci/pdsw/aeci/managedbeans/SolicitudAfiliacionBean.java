@@ -10,11 +10,20 @@ importar aca las clases que necesiten
 import edu.eci.pdsw.samples.aeci.;
 
 ***/
+import edu.eci.pdsw.aeci.entities.Program;
+import edu.eci.pdsw.aeci.entities.Request;
+import edu.eci.pdsw.aeci.entities.User;
+import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
+import edu.eci.pdsw.aeci.services.ServiciosAeciDAO;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -37,20 +46,33 @@ public class SolicitudAfiliacionBean implements Serializable{
     private String Nombre;
     private String Apellido;
     private int Cedula;
-    private int Celular;
+    private String Celular;
     private int telefonoFijo;
     private String correo;
     private int Carrera;
     private int AnoGraducacion;
     private int Periodo;
+    private Date fechaNacimiento;
+    private static ServiciosAeciDAO  Rp = ServiciosAeciDAO.getInstance();
     
     /**
      *
      */
     public void enviarSolicitud(){
-        System.out.println("Nombre "+Nombre);
+        try{
+            Calendar fecha = new GregorianCalendar();
+            java.util.Date fechaDeEnvio  = fecha.getTime();
+            Program programa = Rp.consultarPrograma(Carrera);
+            User newUser = new User(Cedula, Nombre, Apellido, correo, telefonoFijo, Celular, programa, AnoGraducacion, Periodo, fechaNacimiento);
+            Rp.registrarNuevoUsuario(newUser);
+            Request request = new Request(newUser.getId(), newUser.getFechaDeNacimiento());
+            Rp.registrarNuevaSolicitud(request);
+        }catch(ExcepcionServiciosAeci ex){
+                
+                
+        }  
     }
-    
+        
     /**
      * @return the Cedula
      */
@@ -68,14 +90,14 @@ public class SolicitudAfiliacionBean implements Serializable{
     /**
      * @return the Celular
      */
-    public int getCelular() {
+    public String getCelular() {
         return Celular;
     }
 
     /**
      * @param Celular the Celular to set
      */
-    public void setCelular(int Celular) {
+    public void setCelular(String Celular) {
         this.Celular = Celular;
     }
 
@@ -175,6 +197,20 @@ public class SolicitudAfiliacionBean implements Serializable{
      */
     public void setApellido(String Apellido) {
         this.Apellido = Apellido;
+    }
+
+    /**
+     * @return the fechaNacimiento
+     */
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    /**
+     * @param fechaNacimiento the fechaNacimiento to set
+     */
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
 }
