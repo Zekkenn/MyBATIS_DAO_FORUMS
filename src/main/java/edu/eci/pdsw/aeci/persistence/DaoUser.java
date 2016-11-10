@@ -13,4 +13,8 @@ import edu.eci.pdsw.aeci.entities.*;
  */
 public interface DaoUser {
     
+    public void addUser(User user);
+    
+    public void updateUSer(User user);
+    
 }

@@ -6,11 +6,12 @@
 package edu.eci.pdsw.aeci.persistence.mybatisimpl;
 
 import edu.eci.pdsw.aeci.entities.*;
+import edu.eci.pdsw.aeci.persistence.DaoGraduate;
 
 /**
  *
  * @author 2095498
  */
-public class MyBatisDAOGraduate {
+public class MyBatisDAOGraduate implements DaoGraduate {
     
 }

@@ -101,6 +101,10 @@ public abstract class DaoFactory {
      * public abstract DaoEntradaForo getDaoEntradaForo();
      * @throws edu.eci.pdsw.aeci.persistence.PersistenceException
      */
+    public abstract DaoUser getDaoUser();
+    
+    public abstract DaoRequest getDaoRequest();
+    
     public abstract void commitTransaction() throws PersistenceException;
 
     public abstract void rollbackTransaction() throws PersistenceException;

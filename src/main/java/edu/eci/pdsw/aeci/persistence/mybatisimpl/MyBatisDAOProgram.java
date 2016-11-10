@@ -6,11 +6,12 @@
 package edu.eci.pdsw.aeci.persistence.mybatisimpl;
 
 import edu.eci.pdsw.aeci.entities.*;
+import edu.eci.pdsw.aeci.persistence.DaoProgram;
 
 /**
  *
  * @author 2095498
  */
-public class MyBatisDAOProgram {
+public class MyBatisDAOProgram implements DaoProgram {
     
 }

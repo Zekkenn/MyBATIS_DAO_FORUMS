@@ -30,25 +30,39 @@ public class ServiciosAeciDAO extends ServiciosAeci{
     public ServiciosAeciDAO() {
 
     }
-    
+
     @Override
-    public void registrarNuevoUsuario(User usario){
-    
+    public void addUser(User user) throws ExcepcionServiciosAeci {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     @Override
-    public void registrarNuevaSolicitud(Request solicitud){
-    
+    public void addRequest(Request request) throws ExcepcionServiciosAeci {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     @Override
-    public List<Request> consultarEnviosSolicitud(){
-        return null;
+    public void updateRequest(Request request) throws ExcepcionServiciosAeci {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     @Override
-    public Program consultarPrograma(int id){
-        return null;
+    public List<Request> getActiveRequests() throws ExcepcionServiciosAeci {
+        List<Request> activeRequest = null;
+        try {
+            daof.beginSession();
+            activeRequest = daof.getDaoRequest().getActiveRequests();
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+        return activeRequest;
+    }
+
+    @Override
+    public void updateUser(User user) throws ExcepcionServiciosAeci {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
