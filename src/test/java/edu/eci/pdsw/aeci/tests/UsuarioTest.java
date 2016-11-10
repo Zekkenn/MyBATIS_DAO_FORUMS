@@ -17,6 +17,7 @@
 package edu.eci.pdsw.aeci.tests;
 
 
+import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
 import java.sql.Connection;
 import java.util.*;
 import java.sql.Date;
@@ -56,14 +57,14 @@ public class UsuarioTest {
     
     
     @Test
-    public void EnvioAprobado() {
-       
+    public void EnvioDeAprobado() {
+       String NombrePersona = "Felipe Losada";
+       String CorreoPersona = "pruebapdsw@gmail.com";
+       String comentarioPersona = "Probando el envio de correos";
+       ServicioEnvioCorreos EnviarCorreo = new ServicioEnvioCorreos();
+       assertTrue("No se ha enviado el correo exitosamente",EnviarCorreo.EnviarCorreo(NombrePersona, CorreoPersona, comentarioPersona));
     }
     
-    @Test
-    public void EnvioSinAprobado() {
-       
-    }
    
     
     
