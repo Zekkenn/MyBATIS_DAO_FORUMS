@@ -42,6 +42,5 @@ import org.primefaces.event.UnselectEvent;
 @ManagedBean(name = "solicitudCuenta")
 @SessionScoped
 public class SolicitudCuentaBean implements Serializable{
-    
    
 }

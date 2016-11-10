@@ -7,9 +7,116 @@
       <title>Envio solicitud AECI</title>
       <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
+      <link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-black.css"></link>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
+      <head>
+          <style>
+                .center {
+                    margin: auto;
+                    width: 60%;
+                    padding: 10px;
+                }
+            </style>
+      </head>
+      
       <body>
           
+          <div class = "w3-top">
+              <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
+                  <li>
+                      <a href="index.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
+                  </li>
+                  <li class="w3-right w3-hide-small">
+                    <a href="#Contacto" class="w3-left w3-btn w3-black">Contáctanos</a>
+                    <a href="#Enviar Solicitud" class="w3-left w3-btn w3-black">Enviar Solicitud</a>
+                    <a href="#Ingresar" class="w3-left w3-margin-right w3-btn w3-black">Ingresar</a>
+                  </li>
+              </ul>
+          </div>
+          <p></p>
+          <div class = "center" id = "Enviar Solicitud">
+            <form class="w3-container w3-card-4 w3-padding-large w3-white">
+            <h5 class="w3-center">Ingreso de Datos</h5>
+            <div class="w3-group">      
+              <label>Nombre</label>
+              <input class="w3-input w3-border" type="text" value="#{solicitudAfiliacion.nombre}"></input>
+            </div>
+            <div class="w3-group">      
+              <label>Apellido</label>
+              <input class="w3-input w3-border" type="text" value="#{solicitudAfiliacion.apellido}"></input>
+            </div>
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-group w3-half">      
+                  <label>Cedula</label>
+                  <input class="w3-input w3-border" type="text" value="#{solicitudAfiliacion.cedula}"></input>
+                </div>
+                <div class="w3-group w3-half">      
+                  <label>Celular</label>
+                      <input class="w3-input w3-border" type="text" value="#{solicitudAfiliacion.celular}"></input>
+                </div>
+            </div>
+            <div class="w3-group">      
+              <label>Telefono Fijo (opcional)</label>
+              <input class="w3-input w3-border" type="text" value="#{solicitudAfiliacion.telefonoFijo}"></input>
+            </div>
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-group w3-half">      
+                  <label>correo</label>
+                  <input class="w3-input w3-border" type="text" value="#{solicitudAfiliacion.correo}"></input>
+                </div>
+                <select class="w3-select w3-half w3-group w3-white" name="option" value="#{solicitudAfiliacion.carrera}">
+                       <option value = "" >Carrera</option>
+                       <option value="1">Ingeniería Civil</option>
+                       <option value="2">Ingeniería Electrónica</option>
+                       <option value="3">Ingeniería Eléctrica</option>
+                       <option value="4">Ingeniería De Sistemas</option>
+                       <option value="5">Ingeniería Industrial</option>
+                       <option value="6">Matemáticas</option>
+                       <option value="7">Economía</option>
+                       <option value="8">Administración De Empresas</option>
+                       <option value="9">Ingeniería Mecánica</option>
+                       <option value="10">Ingeniería Biomédica</option>
+                </select>
+            </div>
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-group w3-half">      
+                  <label>Año Graduación</label>
+                  <input class="w3-input w3-border" type="text" value="#{solicitudAfiliacion.anoGraducacion}"></input>
+                </div>
+                <select class="w3-select w3-group w3-half w3-white" name="option" value="#{solicitudAfiliacion.periodo}">
+                    <option value = "" >Periodo</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+            <p></p>
+            <p><button onclick="document.getElementById('solicitud').style.display='block'" class="w3-btn w3-hover-light-grey">Enviar Solicitud</button></p>
+            <div id="solicitud" class="w3-modal">
+                <div class="w3-modal-content w3-animate-zoom">
+                    <div class="w3-container w3-black">
+                        <span onclick="document.getElementById('solicitud').style.display='none'" class="w3-closebtn w3-xxlarge w3-hover-text-grey">x</span>
+                        <h1>Solicitud Enviada</h1>
+                    </div>
+                </div>
+            </div>    
+            </form>
+          </div>
+          
+          <div class="w3-container w3-padding-32 w3-black" id="Contacto">
+                <div class="w3-col m6 w3-padding-large">
+                    <h1 class="w3-Left">Contactenos</h1>
+                    <div class="w3-section">
+                        <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin"></i>Dirección: AK.45 No.205-59 (Autopista Norte  K.13)  Bloque A -2° Piso</p>
+                        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin"></i> PBX: +57(1) 668 3600 Ext.1232</p>
+                        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin"></i> Móvil: +57 312 457 0612</p>
+                        <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin"> </i> Correo Electronico: aeci@escuelaing.edu.co </p>
+                        <footer class="w3-content w3-padding-64 w3-text-white w3-xlarge">
+                            <a href="https://www.facebook.com/AECIescuelaing/?fref=ts" class="w3-hover-text-indigo"><i class="fa fa-facebook-official"></i></a>
+                        </footer>
+                    </div>
+                </div>
+              </div> 
       </body>
 </html>
