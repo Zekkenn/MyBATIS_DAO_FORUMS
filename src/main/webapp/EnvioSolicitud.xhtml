@@ -29,42 +29,48 @@
                       <a href="index.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
                   </li>
                   <li class="w3-right w3-hide-small">
-                    <a href="#Contacto" class="w3-left w3-btn w3-black">Contáctanos</a>
-                    <a href="#Enviar Solicitud" class="w3-left w3-btn w3-black">Enviar Solicitud</a>
-                    <a href="#-Ingresar" class="w3-left w3-margin-right w3-btn w3-black">Ingresar</a>
+                      <h:link value="Contacto" class="w3-left w3-btn w3-black" fragment="Contáctanos"/>
+                      <h:link value="Enviar Solicitud" class="w3-left w3-btn w3-black" fragment="Enviar Solicitud"/>
+                      <h:link value="Ingresar" class="w3-left w3-margin-right w3-btn w3-black" fragment="Ingresar"/>
                   </li>
               </ul>
           </div>
           <p></p>
           <div class = "center" id = "Enviar Solicitud">
             <h:form class="w3-container w3-card-4 w3-padding-large w3-white">
-            <h5 class="w3-center">Ingreso de Datos</h5>
-            <div class="w3-group">      
-              <label>Nombre</label>
-              <p:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.nombre}"/>
+                <h:outputText class="w3-center" value="Ingreso de Datos"/>
+            <div class="w3-group">   
+                <h:outputLabel value = "Nombre"/>
+                <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.nombre}"/>
             </div>
-            <div class="w3-group">      
-              <label>Apellido</label>
+            <div class="w3-group">   
+                <h:outputLabel value = "Apellido"/>
               <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.apellido}"/>
             </div>
             <div class="w3-row-padding" style="margin:0 -16px;">
                 <div class="w3-group w3-half">      
-                  <label>Cedula</label>
+                    <h:outputLabel value = "Cedula"/>
                   <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.cedula}"/>
                 </div>
                 <div class="w3-group w3-half">      
-                  <label>Celular</label>
+                    <h:outputLabel value = "Celular"/>
                   <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.celular}"/>
                 </div>
             </div>
-            <div class="w3-group">      
-              <label>Telefono Fijo (opcional)</label>
-              <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.telefonoFijo}"/>
-            </div>
             <div class="w3-row-padding" style="margin:0 -16px;">
                 <div class="w3-group w3-half">      
-                  <label>correo</label>
-                  <p:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.correo}"/>
+                    <h:outputLabel value = "Telefono Fijo"/>
+                    <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.telefonoFijo}"/>
+                </div>
+                <div class="w3-group w3-half">
+                    <p:outputLabel value="Fecha de Nacimiento" />
+                    <p:calendar class="w3-input w3-border" value="#{solicitudAfiliacion.fechaNacimiento}" pattern="dd-MM-yyyy"  placeholder="DD MM YYYY" mask="true" />
+                </div>      
+            </div>
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-group w3-half">   
+                    <h:outputLabel value = "Correo"/>
+                    <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.correo}"/>
                 </div>
                 <h:selectOneMenu class="w3-select w3-half w3-group w3-white" value="#{solicitudAfiliacion.carrera}">
                     <f:selectItem itemLabel="Carrera" itemValue="" />
@@ -78,21 +84,58 @@
                     <f:selectItem itemLabel="Administración De Empresas" itemValue="8"/>
                     <f:selectItem itemLabel="Ingeniería Mecánica" itemValue="9"/>
                     <f:selectItem itemLabel="Ingeniería Biomédica" itemValue="10"/>
-                </h:selectOneMenu>>
+                </h:selectOneMenu>
             </div>
             <div class="w3-row-padding" style="margin:0 -16px;">
-                <div class="w3-group w3-half">      
-                  <label>Año Graduación</label>
-                  <p:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.anoGraducacion}"/>
+                <div class="w3-group w3-half">   
+                    <h:outputLabel value = "Año de graduación"/>
+                    <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.anoGraducacion}"/>
                 </div>
-                <select class="w3-select w3-group w3-half w3-white" name="option" value="#{solicitudAfiliacion.periodo}">
-                    <option value = "" >Periodo</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
+                <h:selectOneMenu class="w3-select w3-group w3-half w3-white" value="#{solicitudAfiliacion.periodo}">
+                    <f:selectItem itemLabel="Periodo" itemValue=""/>
+                    <f:selectItem itemLabel="1" itemValue="1"/>
+                    <f:selectItem itemLabel="2" itemValue="2"/>
+                </h:selectOneMenu>
             </div>
+                
+            <div class="w3-container w3-padding-32" id="projects">
+                <h:outputText value = "Para estudiantes" class="w3-border-bottom w3-border-light-grey w3-padding-12"/>
+            </div>
+                <div class="w3-row-padding">
+                    <div class="w3-group w3-half">   
+                        <h:outputLabel value = "Semestre"/>
+                        <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.semestre}"/>
+                    </div>
+                </div>
+            <div class="w3-container w3-padding-32" id="projects">
+                <h:outputText value = "Para egresados" class="w3-border-bottom w3-border-light-grey w3-padding-12"/>
+            </div>
+                <div class="w3-row-padding">
+                    <div class="w3-group w3-half">   
+                        <h:outputLabel value = "Empresa donde trabaja"/>
+                        <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.nombreEmpresa}"/>
+                    </div>
+                    <div class="w3-group w3-half">   
+                        <h:outputLabel value = "Cargo"/>
+                        <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.cargo}"/>
+                    </div>
+                </div>
+                                <div class="w3-row-padding">
+                    <div class="w3-group w3-half">   
+                        <h:outputLabel value = "Direccion Empresa"/>
+                        <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.direccionEmpresa}"/>
+                    </div>
+                    <div class="w3-group w3-half">   
+                        <h:outputLabel value = "Telefono Empresa"/>
+                        <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.telefonoEmpresa}"/>
+                    </div>
+                </div>
             <p></p>
-            <p:commandButton value = "Enviar solicitud" actionListener="#{solicitudAfiliacion.enviarSolicitud()}" class="w3-btn w3-hover-light-grey"></p:commandButton>
+                <p:commandButton value = "Enviar solicitud" actionListener="#{solicitudAfiliacion.enviarSolicitud()}" class="w3-btn w3-black" onclick="PF('dlg1').show();"/>
+                
+                <p:dialog class="w3-btn w3-hover-light-grey" header="Solicitud Enviada" widgetVar="dlg1" minHeight="40">
+                    <h:outputText value="Su solicitud fue enviar, la respuesta se le hara llegar al correo" />
+                </p:dialog>
             </h:form>
           </div>
           

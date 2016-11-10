@@ -17,6 +17,7 @@ import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeciDAO;
 import java.io.Serializable;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
@@ -45,55 +46,59 @@ public class SolicitudAfiliacionBean implements Serializable{
         
     private String Nombre;
     private String Apellido;
-    private int Cedula;
+    private String Cedula;
     private String Celular;
-    private int telefonoFijo;
+    private String telefonoFijo;
     private String correo;
     private int Carrera;
-    private int AnoGraducacion;
+    private String AnoGraducacion;
     private int Periodo;
     private Date fechaNacimiento;
     private static ServiciosAeciDAO  Rp = ServiciosAeciDAO.getInstance();
+    
+    private String semestre;
+    private String NombreEmpresa;
+    private String Cargo;
+    private String DireccionEmpresa;
+    private String TelefonoEmpresa;
     
     /**
      *
      */
     public void enviarSolicitud(){
-        System.out.println("Nombre "+Nombre);
-        System.out.println("Apellido "+Apellido);
-        System.out.println("Cedula "+Cedula);
-        System.out.println("Celular "+Celular);
-        System.out.println("telefonoFijo "+telefonoFijo);
-        System.out.println("correo "+correo);
-        //System.out.println("Carrera "+Carrera);
-        //System.out.println("AnoGraducacion"+AnoGraducacion);
-        //System.out.println("AnoGraducacion"+AnoGraducacion);
-        //System.out.println("AnoGraducacion"+AnoGraducacion);
         /*try{
-            Calendar fecha = new GregorianCalendar();
-            java.util.Date fechaDeEnvio  = fecha.getTime();
-            Program programa = Rp.consultarPrograma(Carrera);
-            User newUser = new User(Cedula, Nombre, Apellido, correo, telefonoFijo, Celular, programa, AnoGraducacion, Periodo, fechaNacimiento);
-            Rp.registrarNuevoUsuario(newUser);
-            Request request = new Request(newUser.getId(), newUser.getFechaDeNacimiento());
-            Rp.registrarNuevaSolicitud(request);
-        }catch(ExcepcionServiciosAeci ex){
-                
-                
-        } */ 
+            int CC = Integer.parseInt(Cedula);
+            int tel = Integer.getInteger(telefonoFijo);
+            int yearGraduate = Integer.parseInt(AnoGraducacion);
+            try{
+                Calendar fecha = new GregorianCalendar();
+                java.util.Date fechaDeEnvio  = fecha.getTime();
+                Program programa = Rp.consultarPrograma(Carrera);
+                User newUser = new User(CC, Nombre, Apellido, correo, tel, Celular, programa, yearGraduate, Periodo, fechaNacimiento);
+                Rp.registrarNuevoUsuario(newUser);
+                Request request = new Request(newUser.getId(), newUser.getFechaDeNacimiento());
+                Rp.registrarNuevaSolicitud(request);
+            }catch(ExcepcionServiciosAeci ex){
+
+
+            }
+        }catch(NumberFormatException ex){
+            
+        }*/
+        
     }
         
     /**
      * @return the Cedula
      */
-    public int getCedula() {
+    public String getCedula() {
         return Cedula;
     }
 
     /**
      * @param Cedula the Cedula to set
      */
-    public void setCedula(int Cedula) {
+    public void setCedula(String Cedula) {
         this.Cedula = Cedula;
     }
 
@@ -114,14 +119,14 @@ public class SolicitudAfiliacionBean implements Serializable{
     /**
      * @return the telefonoFijo
      */
-    public int getTelefonoFijo() {
+    public String getTelefonoFijo() {
         return telefonoFijo;
     }
 
     /**
      * @param telefonoFijo the telefonoFijo to set
      */
-    public void setTelefonoFijo(int telefonoFijo) {
+    public void setTelefonoFijo(String telefonoFijo) {
         this.telefonoFijo = telefonoFijo;
     }
 
@@ -156,14 +161,14 @@ public class SolicitudAfiliacionBean implements Serializable{
     /**
      * @return the AnoGraducacion
      */
-    public int getAnoGraducacion() {
+    public String getAnoGraducacion() {
         return AnoGraducacion;
     }
 
     /**
      * @param AnoGraducacion the AnoGraducacion to set
      */
-    public void setAnoGraducacion(int AnoGraducacion) {
+    public void setAnoGraducacion(String AnoGraducacion) {
         this.AnoGraducacion = AnoGraducacion;
     }
 
@@ -221,6 +226,76 @@ public class SolicitudAfiliacionBean implements Serializable{
      */
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    /**
+     * @return the semestre
+     */
+    public String getSemestre() {
+        return semestre;
+    }
+
+    /**
+     * @param semestre the semestre to set
+     */
+    public void setSemestre(String semestre) {
+        this.semestre = semestre;
+    }
+
+    /**
+     * @return the NombreEmpresa
+     */
+    public String getNombreEmpresa() {
+        return NombreEmpresa;
+    }
+
+    /**
+     * @param NombreEmpresa the NombreEmpresa to set
+     */
+    public void setNombreEmpresa(String NombreEmpresa) {
+        this.NombreEmpresa = NombreEmpresa;
+    }
+
+    /**
+     * @return the Cargo
+     */
+    public String getCargo() {
+        return Cargo;
+    }
+
+    /**
+     * @param Cargo the Cargo to set
+     */
+    public void setCargo(String Cargo) {
+        this.Cargo = Cargo;
+    }
+
+    /**
+     * @return the DireccionEmpresa
+     */
+    public String getDireccionEmpresa() {
+        return DireccionEmpresa;
+    }
+
+    /**
+     * @param DireccionEmpresa the DireccionEmpresa to set
+     */
+    public void setDireccionEmpresa(String DireccionEmpresa) {
+        this.DireccionEmpresa = DireccionEmpresa;
+    }
+
+    /**
+     * @return the TelefonoEmpresa
+     */
+    public String getTelefonoEmpresa() {
+        return TelefonoEmpresa;
+    }
+
+    /**
+     * @param TelefonoEmpresa the TelefonoEmpresa to set
+     */
+    public void setTelefonoEmpresa(String TelefonoEmpresa) {
+        this.TelefonoEmpresa = TelefonoEmpresa;
     }
 
 }
