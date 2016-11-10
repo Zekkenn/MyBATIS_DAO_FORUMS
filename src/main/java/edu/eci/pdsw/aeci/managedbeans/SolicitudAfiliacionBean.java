@@ -59,7 +59,17 @@ public class SolicitudAfiliacionBean implements Serializable{
      *
      */
     public void enviarSolicitud(){
-        try{
+        System.out.println("Nombre "+Nombre);
+        System.out.println("Apellido "+Apellido);
+        System.out.println("Cedula "+Cedula);
+        System.out.println("Celular "+Celular);
+        System.out.println("telefonoFijo "+telefonoFijo);
+        System.out.println("correo "+correo);
+        //System.out.println("Carrera "+Carrera);
+        //System.out.println("AnoGraducacion"+AnoGraducacion);
+        //System.out.println("AnoGraducacion"+AnoGraducacion);
+        //System.out.println("AnoGraducacion"+AnoGraducacion);
+        /*try{
             Calendar fecha = new GregorianCalendar();
             java.util.Date fechaDeEnvio  = fecha.getTime();
             Program programa = Rp.consultarPrograma(Carrera);
@@ -70,7 +80,7 @@ public class SolicitudAfiliacionBean implements Serializable{
         }catch(ExcepcionServiciosAeci ex){
                 
                 
-        }  
+        } */ 
     }
         
     /**
